@@ -1,0 +1,90 @@
+import React, { useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Sun, Moon, Youtube, Twitter, Search, Newspaper } from 'lucide-react';
+import TrendingSection from './components/TrendingSection';
+import Header from './components/Header';
+function LandingPage({ darkMode }: { darkMode: boolean }) {
+const navigate = useNavigate();
+return (
+<div className="h-screen flex flex-col items-center justify-center px-4">
+<div className="text-center">
+<h1 className={`text-7xl font-bold mb-6 ${darkMode ? 'text-white' :
+'text-gray-900'}`}>
+Talk Trends
+</h1>
+<p className={`text-2xl mb-12 max-w-2xl mx-auto ${darkMode ? 'text- gray-300' : 'text-gray-600'}`}>
+Your gateway to the digital pulse. Discover what's capturing the world's
+attention across all major platforms in real-time. </p>
+<button
+onClick={() => navigate('/trends')}
+className={`px-8 py-3 text-lg font-semibold rounded-full transition-all
+transform hover:scale-105 ${
+darkMode
+? 'bg-white text-gray-900 hover:bg-gray-100' : 'bg-gray-900 text-white hover:bg-gray-800' }`}
+>
+Trends
+</button>
+
+Page | 13
+
+</div>
+</div>
+);
+}
+function TrendsPage({ darkMode }: { darkMode: boolean }) {
+const sections = [
+{
+title: 'YouTube Trends', icon: Youtube, description: 'Discover what videos are capturing the world\'s attention
+right now.', link: 'https://www.youtube.com/feed/trending', color: 'text-red-600' },{
+title: 'Twitter Trends', icon: Twitter, description: 'Stay updated with the latest conversations and hashtags.', link: 'https://twitter.com/explore/tabs/trending', color: 'text-blue-400' },{
+title: 'Google Trends', icon: Search, description: 'Explore what the world is searching for in real-time.', link: 'https://trends.google.com/trends/trendingsearches/daily', color: 'text-green-500' },{
+title: 'News Headlines', icon: Newspaper, description: 'Breaking news and top stories from around the globe.', link: 'https://news.google.com', color: 'text-purple-600' }
+];
+
+Page | 14
+
+return (
+<main className="container mx-auto px-4 py-16">
+<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+{sections.map((section) => (
+<TrendingSection
+key={section.title}
+{...section}
+darkMode={darkMode}
+/>
+))}
+</div>
+</main>
+);
+}
+function App() {
+const [darkMode, setDarkMode] = useState(false);
+const toggleDarkMode = () => {
+setDarkMode(!darkMode);
+document.documentElement.classList.toggle('dark');
+};
+return (
+<div className={`min-h-screen ${darkMode ? 'dark bg-gray-900' : 'bg-gray- 50'}`}>
+<Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+<Routes>
+<Route path="/" element={<LandingPage darkMode={darkMode} />} />
+<Route path="/trends" element={<TrendsPage darkMode={darkMode} />}
+/>
+</Routes>
+</div>
+);
+}
+export default App;
+
+Page | 15
+
+Index.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+scroll-behavior: smooth;
+}
+body {
+@apply antialiased;
+}
