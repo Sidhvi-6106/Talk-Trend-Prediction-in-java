@@ -24,9 +24,6 @@ darkMode
 >
 Trends
 </button>
-
-Page | 13
-
 </div>
 </div>
 );
@@ -40,9 +37,6 @@ title: 'Twitter Trends', icon: Twitter, description: 'Stay updated with the late
 title: 'Google Trends', icon: Search, description: 'Explore what the world is searching for in real-time.', link: 'https://trends.google.com/trends/trendingsearches/daily', color: 'text-green-500' },{
 title: 'News Headlines', icon: Newspaper, description: 'Breaking news and top stories from around the globe.', link: 'https://news.google.com', color: 'text-purple-600' }
 ];
-
-Page | 14
-
 return (
 <main className="container mx-auto px-4 py-16">
 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -76,15 +70,3 @@ return (
 }
 export default App;
 
-Page | 15
-
-Index.css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-html {
-scroll-behavior: smooth;
-}
-body {
-@apply antialiased;
-}
